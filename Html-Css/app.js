@@ -57,7 +57,7 @@ figurePart.forEach((part,index)=>{
 
 if(letterWrong.length === figurePart.length){
     finalMessage.innerText = `Unfortunately You Lost!!! 
-     The word is ${luckyWord}`
+     The word is --${luckyWord}--`
     popup.style.display = 'flex'
 }
 }
@@ -77,10 +77,10 @@ function showNotification(){
 
 //Keydown Letter Press
 window.addEventListener('keydown', (e) => {
-    console.log(e.keyCode);
+    //console.log(e.keyCode);
     if(e.keyCode >=65 && e.keyCode <=90){
         const letter = e.key;
-        console.log(letter);
+        //console.log(letter);
         if(luckyWord.includes(letter)){
             if(!letterCorrect.includes(letter)){
                 letterCorrect.push(letter);

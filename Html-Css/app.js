@@ -1,12 +1,13 @@
 const hiddenWord = document.querySelector('.word');
 const wrongLetter = document.querySelector('#wrong-letters');
 const tryAgainBtn = document.querySelector('#play-button');
-const popUp = document.querySelector('.popup-container');
+const popup = document.querySelector('#popup-container');
 const notification = document.querySelector('.notification-container');
 const finalMessage = document.querySelector('#final-message');
 const figurePart = document.querySelectorAll('.figure-part');
-const words = ['Hangman', 'Clarusway', 'Computer', 'Previous', 'Document', 'Python'];
-const luckyWord = words[Math.floor(Math.random() * words.length)];
+const words = ['hangman', 'clarusway', 'project', 'linux', 'react', 'python', 'babel'];
+
+let luckyWord = words[Math.floor(Math.random() * words.length)];
 const letterCorrect = [];
 const letterWrong = [];
 
@@ -30,20 +31,21 @@ function displayWord(){
 const innerWord = hiddenWord.innerText.replace(/\n/g,'');
 
 if(innerWord === luckyWord){
-    finalMessage.innerMTML = 'Congragulations!!!!'
-    popUp.style.display = 'flex';
+    finalMessage.innerHTML = 'Congragulations!!!!'
+    popup.style.display = 'flex';
 }
 }
 
 //Wrong Letter Function
 
-function updateWrongLettersEl(){
-    WrongLettersEl.innerText = `
+function updateWrongLetter(){
+    wrongLetter.innerHTML = `
     ${letterWrong.length >0 ? '<p>Wrong</p>' : ''}
     ${letterWrong.map(letter =>`<span>${letter}</span>`)}
     `;
     //display body figureParts
 figurePart.forEach((part,index)=>{
+    const errors = letterWrong.length;
     if(index < errors){
         part.style.display= 'block';
     }else{
@@ -55,9 +57,10 @@ figurePart.forEach((part,index)=>{
 
 if(letterWrong.length === figurePart.length){
     finalMessage.innerText = 'Unfortunately You Lost!!!'
-    popUp.style.display = 'flex'
+    popup.style.display = 'flex'
 }
 }
+
 
 //show notification
 
@@ -70,11 +73,13 @@ function showNotification(){
 
 
 
+
 //Keydown Letter Press
-window.addEventListener('keydown',(e)=>{
+window.addEventListener('keydown', (e) => {
+    console.log(e.keyCode);
     if(e.keyCode >=65 && e.keyCode <=90){
         const letter = e.key;
-        //console.log(letter);
+        console.log(letter);
         if(luckyWord.includes(letter)){
             if(!letterCorrect.includes(letter)){
                 letterCorrect.push(letter);
@@ -85,24 +90,27 @@ window.addEventListener('keydown',(e)=>{
         }else{
             if(!letterWrong.includes(letter)){
                 letterWrong.push(letter);
-                updateWrongLettersEl();
+                updateWrongLetter();
             }else{
                 showNotification();
             }
         }
         
     }
-})
+});
 
 // try/play again
 
-tryAgainBtn.addEventListener('click',() =>{
+tryAgainBtn.addEventListener('click', () => {
     letterCorrect.splice(0);
     letterWrong.splice(0);
-    luckyWord = words[Math.floor(Math.random() * words.length)];
+    luckyWord = 
+     words[
+        Math.floor(Math.random() * words.length)
+    ]; 
     displayWord();
-    updateWrongLettersEl();
-    popUp.style.display = 'none';
-})
+    updateWrongLetter();
+    popup.style.display = 'none';
+});
 
 displayWord();

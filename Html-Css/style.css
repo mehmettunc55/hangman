@@ -15,7 +15,22 @@ body {
 }
 
 h1 {
-  margin: 20px 0 0;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  letter-spacing: 2em;
+  font-size: 3em;
+  color:chocolate;
+}
+
+.headline{
+  letter-spacing: 0.3em;
+  font-size: 2em;
+  color:darkolivegreen;
+  display:flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .game-container {
@@ -48,10 +63,13 @@ h1 {
 
 .wrong-letters-container p {
   margin: 0 0 5px;
+  font-size: 24px;
+  color:red;
 }
 
 .wrong-letters-container span {
   font-size: 24px;
+  color:red;
 }
 
 .word {
@@ -82,28 +100,32 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  /* display: flex; */
+  display: flex; 
   display: none;
   align-items: center;
   justify-content: center;
+  border : 2px solid white;
 }
 
 .popup {
-  background: #2980b9;
+  background: #c3f707;
   border-radius: 5px;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  text-align: center;
+  text-align: center; 
+  
 }
 
 .popup button {
   cursor: pointer;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   color: #2980b9;
   border: 0;
   margin-top: 20px;
   padding: 12px 20px;
   font-size: 16px;
+  
+ 
 }
 
 .popup button:active {
@@ -115,12 +137,14 @@ h1 {
 }
 
 .notification-container {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(252, 6, 6, 0.3);
   border-radius: 10px 10px 0 0;
   padding: 15px 20px;
   position: absolute;
-  bottom: -50px;
-  transition: transform 0.3s ease-in-out;
+  font-size: 2em;
+  font-weight: bolder;
+  bottom: -70px;
+  transition: transform 0.6s ease-in-out;
 }
 
 .notification-container p {
@@ -128,5 +152,5 @@ h1 {
 }
 
 .notification-container.show {
-  transform: translateY(-50px);
+  transform: translateY(-150px);
 }

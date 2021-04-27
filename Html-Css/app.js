@@ -31,7 +31,7 @@ function displayWord(){
 const innerWord = hiddenWord.innerText.replace(/\n/g,'');
 
 if(innerWord === luckyWord){
-    finalMessage.innerHTML = 'Congragulations!!!!'
+    finalMessage.innerHTML = '&#9786; !!Congragulations!! &#9786;'
     popup.style.display = 'flex';
 }
 }
@@ -56,7 +56,8 @@ figurePart.forEach((part,index)=>{
 //check if lost
 
 if(letterWrong.length === figurePart.length){
-    finalMessage.innerText = 'Unfortunately You Lost!!!'
+    finalMessage.innerText = `Unfortunately You Lost!!! 
+     The word is ${luckyWord}`
     popup.style.display = 'flex'
 }
 }
@@ -65,10 +66,10 @@ if(letterWrong.length === figurePart.length){
 //show notification
 
 function showNotification(){
-    notification.classList.remove('show');
+    notification.classList.add('show');
     setTimeout(() => {
         notification.classList.remove('show')
-    },2000)
+    },3000)
 }
 
 

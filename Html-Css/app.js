@@ -57,10 +57,10 @@ figurePart.forEach((part,index)=>{
 
 if(letterWrong.length === figurePart.length){
     finalMessage.innerText = `Unfortunately You Lost!!! 
-     The word is --${luckyWord}--`
-    popup.style.display = 'flex'
-}
-}
+     The word is --${luckyWord}`
+    popup.style.display = 'flex';
+};
+};
 
 
 //show notification
